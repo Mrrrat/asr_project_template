@@ -86,6 +86,10 @@ class Trainer(BaseTrainer):
         for batch_idx, batch in enumerate(
                 tqdm(self.data_loader, desc="train", total=self.len_epoch)
         ):
+            ### OBO
+            if batch_idx >= 1:
+                break
+            ### OBO
             try:
                 batch = self.process_batch(
                     batch,

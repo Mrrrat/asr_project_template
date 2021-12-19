@@ -1,4 +1,4 @@
-torch
+torch==1.10.1+cu102
 torchvision
 numpy
 tqdm
@@ -8,7 +8,8 @@ matplotlib
 
 pandas
 speechbrain~=0.5.9
-torchaudio~=0.9.1
+torchaudio===0.10.0
 datasets
 torch_audiomentations
 editdistance
+intel-openmp

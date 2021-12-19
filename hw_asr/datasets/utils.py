@@ -50,6 +50,10 @@ def get_dataloaders(configs: ConfigParser, text_encoder: BaseTextEncoder):
             raise Exception()
 
         # create dataloader
+
+        ### OBO
+        shuffle = False
+        ### OBO
         dataloader = DataLoader(
             dataset, batch_size=bs, collate_fn=collate_fn,
             shuffle=shuffle, num_workers=num_workers,

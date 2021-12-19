@@ -8,7 +8,7 @@ class BaselineModel(BaseModel):
     def __init__(self, n_feats, n_class, fc_hidden=512, *args, **kwargs):
         super().__init__(n_feats, n_class, *args, **kwargs)
         self.net = Sequential(
-            # people say it can aproximate any function...
+            # people say it can approximate any function...
             nn.Linear(in_features=n_feats, out_features=fc_hidden),
             nn.ReLU(),
             nn.Linear(in_features=fc_hidden, out_features=fc_hidden),
