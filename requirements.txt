@@ -1,5 +1,5 @@
-torch==1.10.1+cu102
-torchvision
+torch==1.10.1+cu113
+torchvision==0.11.2+cu113
 numpy
 tqdm
 tensorboard
@@ -8,8 +8,9 @@ matplotlib
 
 pandas
 speechbrain~=0.5.9
-torchaudio===0.10.0
+torchaudio===0.10.1+cu113
 datasets
 torch_audiomentations
 editdistance
-intel-openmp
+
+--find-links https://download.pytorch.org/whl/cu113/torch_stable.html
