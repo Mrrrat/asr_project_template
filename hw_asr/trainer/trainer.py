@@ -44,7 +44,9 @@ class Trainer(BaseTrainer):
             self.len_epoch = len(self.data_loader)
         else:
             # iteration-based training
-            self.data_loader = inf_loop(data_loader)
+            ###OBO
+            #self.data_loader = inf_loop(data_loader)
+            ###OBO
             self.len_epoch = len_epoch
         self.valid_data_loader = valid_data_loader
         self.do_validation = self.valid_data_loader is not None
@@ -86,10 +88,10 @@ class Trainer(BaseTrainer):
         for batch_idx, batch in enumerate(
                 tqdm(self.data_loader, desc="train", total=self.len_epoch)
         ):
-            ### OBO
-            if batch_idx >= 1:
+            ###OBO
+            if batch_idx >= self.len_epoch:
                 break
-            ### OBO
+            ###OBO
             try:
                 batch = self.process_batch(
                     batch,
@@ -120,8 +122,7 @@ class Trainer(BaseTrainer):
                 self._log_predictions(part="train", **batch)
                 self._log_spectrogram(batch["spectrogram"])
                 self._log_scalars(self.train_metrics)
-            if batch_idx >= self.len_epoch:
-                break
+
         log = self.train_metrics.result()
 
         if self.do_validation:
@@ -202,7 +203,7 @@ class Trainer(BaseTrainer):
             text,
             log_probs,
             log_probs_length,
-            examples_to_log=5,
+            examples_to_log=20,
             *args,
             **kwargs,
     ):

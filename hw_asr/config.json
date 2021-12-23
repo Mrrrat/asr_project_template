@@ -18,13 +18,13 @@
     "args": {
       "n_feats": 128,
       "fc_hidden": 512,
-      "n_layers": 2
+      "n_layers": 4
     }
   },
   "data": {
     "train": {
-      "batch_size": 10,
-      "num_workers": 5,
+      "batch_size": 20,
+      "num_workers": 0,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -38,7 +38,7 @@
     },
     "val": {
       "batch_size": 20,
-      "num_workers": 5,
+      "num_workers": 0,
       "datasets": [
         {
           "type": "LibrispeechDataset",
@@ -52,9 +52,9 @@
     }
   },
   "optimizer": {
-    "type": "SGD",
+    "type": "Adam",
     "args": {
-      "lr": 3e-4
+      "lr": 5e-2
     }
   },
   "loss": {
@@ -76,25 +76,21 @@
     }
   ],
   "lr_scheduler": {
-    "type": "OneCycleLR",
+    "type": "ExponentialLR",
     "args": {
-      "steps_per_epoch": 100,
-      "epochs": 50,
-      "anneal_strategy": "cos",
-      "max_lr": 4e-3,
-      "pct_start": 0.2
+      "gamma": 0.998
     }
   },
   "trainer": {
-    "epochs": 50,
+    "epochs": 1000,
     "save_dir": "saved/",
-    "save_period": 5,
+    "save_period": 100,
     "verbosity": 2,
     "monitor": "min val_loss",
     "early_stop": 100,
     "visualize": "wandb",
     "wandb_project": "asr_project",
-    "len_epoch": 100,
+    "len_epoch": 1,
     "grad_norm_clip": 10
   }
 }
