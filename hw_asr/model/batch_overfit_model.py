@@ -10,7 +10,7 @@ class BatchOverfitModel(BaseModel):
         self.fc = nn.Linear(fc_hidden * 2, n_class)
 
     def forward(self, spectrogram, *args, **kwargs):
-        x, _ = self.lstm(spectrogram)
+        x, _ = self.lstm(spectrogram.transpose(1, 2))
         x = self.fc(x)
         return  {"logits": x}
 

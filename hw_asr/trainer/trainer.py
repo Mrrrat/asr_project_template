@@ -49,7 +49,9 @@ class Trainer(BaseTrainer):
             ###OBO
             self.len_epoch = len_epoch
         self.valid_data_loader = valid_data_loader
-        self.do_validation = self.valid_data_loader is not None
+        ###OBO
+        self.do_validation = False #self.valid_data_loader is not None
+        ###OBO
         self.lr_scheduler = lr_scheduler
         self.log_step = 10
 

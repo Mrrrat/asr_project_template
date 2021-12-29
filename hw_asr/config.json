@@ -27,11 +27,11 @@
       "num_workers": 0,
       "datasets": [
         {
-          "type": "LibrispeechDataset",
+          "type": "LJSpeechDataset",
           "args": {
-            "part": "train-clean-100",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
+            "max_audio_length": 30,
+            "max_text_length": 200,
+            "limit": -1
           }
         }
       ]
@@ -41,11 +41,11 @@
       "num_workers": 0,
       "datasets": [
         {
-          "type": "LibrispeechDataset",
+          "type": "LJSpeechDataset",
           "args": {
-            "part": "dev-clean",
-            "max_audio_length": 20.0,
-            "max_text_length": 200
+            "max_audio_length": 30,
+            "max_text_length": 200,
+            "limit": -1
           }
         }
       ]
@@ -76,9 +76,10 @@
     }
   ],
   "lr_scheduler": {
-    "type": "ExponentialLR",
+    "type": "StepLR",
     "args": {
-      "gamma": 0.998
+      "step_size": 500,
+      "gamma": 0.8
     }
   },
   "trainer": {
